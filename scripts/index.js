@@ -17,7 +17,7 @@ function add(a, b) {
     return addition;
   }
 
-  return addition.toFixed(3);
+  return Number(addition.toFixed(3));
 }
 
 function subtract(a, b) {
@@ -27,7 +27,7 @@ function subtract(a, b) {
     return subtraction;
   }
 
-  return subtraction.toFixed(3);
+  return Number(subtraction.toFixed(3));
 }
 
 function multiply(a, b) {
@@ -37,7 +37,7 @@ function multiply(a, b) {
     return multiplication;
   }
 
-  return multiplication.toFixed(3);
+  return Number(multiplication.toFixed(3));
 }
 
 function divide(a, b) {
@@ -50,7 +50,7 @@ function divide(a, b) {
     return division;
   }
 
-  return division.toFixed(3);
+  return Number(division.toFixed(3));
 }
 
 // Run mathematical operation based on user input
@@ -104,11 +104,11 @@ function addNumberToDOM(number) {
     if (number1 === 0) {
       number1 = number;
       displayHTML.textContent = number1;
-    } else {
+    } else if (number1.length < 10) {
       number1 += number;
       displayHTML.textContent = number1;
     }
-  } else {
+  } else if (number2.length < 10) {
     number2 += number;
     displayHTML.textContent = number2;
     equalsHTML.classList.add("enabled");
