@@ -4,12 +4,12 @@ let number1 = "";
 let number2 = "";
 let operator = "";
 
-// Keeping access to widely used HTML element
+// Keeping access to frequently used HTML element
 const displayHTML = document.getElementById("mainDisplay");
 const equalsHTML = document.getElementById("equals");
 const decimalHTML = document.getElementById("decimal");
 
-// Basic Calculator functions ensuring large numbers are rounded to 3 decimal places
+// Basic Calculator functions ensuring computed large numbers are rounded to 3 decimal places
 function add(a, b) {
   const addition = Number(a) + Number(b);
 
@@ -88,6 +88,15 @@ function operateAndDisplay() {
   operator = "";
 }
 
+// Clear DOM  and reset variables on AC click
+function clearDOM() {
+  displayHTML.textContent = "0";
+  number1 = "";
+  number2 = "";
+  operator = "";
+  equalsHTML.classList.remove("enabled");
+}
+
 // Adding number to DOM function
 function addNumberToDOM(number) {
   if (!operator) {
@@ -106,16 +115,7 @@ function addNumberToDOM(number) {
   }
 }
 
-// Clear DOM on AC
-function clearDOM() {
-  displayHTML.textContent = "0";
-  number1 = "";
-  number2 = "";
-  operator = "";
-  equalsHTML.classList.remove("enabled");
-}
-
-// Listen for input and change number variables
+// Listen for number input and change number variables
 document
   .querySelectorAll(".number")
   .forEach((numberElement) =>
@@ -141,7 +141,7 @@ function operatorSelectionDOM(operatorElement) {
   }
 }
 
-// Listen for selection of operand
+// Listen for selection of operator
 document
   .querySelectorAll(".operand")
   .forEach((operatorElement) =>
@@ -150,10 +150,9 @@ document
     )
   );
 
-// Clear the display on AC click
 document.getElementById("AC").addEventListener("click", () => clearDOM());
 
-// Handle equals
+// Handle equals click
 function handleEquals() {
   if (number2) {
     operateAndDisplay();
@@ -161,7 +160,6 @@ function handleEquals() {
   }
 }
 
-// Allow equals ensuring number2 presence
 document
   .getElementById("equals")
   .addEventListener("click", () => handleEquals());
@@ -182,7 +180,6 @@ function handleDecimal() {
   }
 }
 
-// Handling decimal selection
 document
   .getElementById("decimal")
   .addEventListener("click", () => handleDecimal());
@@ -200,7 +197,6 @@ function handlePercentage() {
   }
 }
 
-// Handling % (percentage) selection
 document
   .getElementById("percentage")
   .addEventListener("click", () => handlePercentage());
@@ -225,7 +221,6 @@ function handleBackSpace() {
   }
 }
 
-// Handling C (backspace) selection
 document
   .getElementById("backspace")
   .addEventListener("click", () => handleBackSpace());
@@ -233,7 +228,6 @@ document
 const numberKeys = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 const operatorKeys = ["+", "-", "*", "/"];
 const enterKeys = ["Enter", "="];
-const decimalKeys = ["."];
 const operatorConversion = {
   "+": "+",
   "-": "-",
@@ -244,7 +238,6 @@ const operatorConversion = {
 document.addEventListener(
   "keydown",
   (event) => {
-    console.log(event.key);
     if (numberKeys.includes(event.key)) {
       addNumberToDOM(event.key);
     } else if (operatorKeys.includes(event.key)) {
