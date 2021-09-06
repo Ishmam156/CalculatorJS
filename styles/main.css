@@ -35,21 +35,21 @@ body {
   border: 1px solid #4e4d50;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 900px) {
   #calculator {
     width: 40vw;
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 650px) {
   #calculator {
-    width: 50vw;
+    width: 75vw;
   }
 }
 
 @media screen and (max-height: 400px) {
   #calculator {
-    height: 80vh;
+    height: 75vh;
   }
 }
 
