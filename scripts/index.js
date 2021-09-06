@@ -97,6 +97,8 @@ function clearDOM() {
   equalsHTML.classList.remove("enabled");
 }
 
+document.getElementById("AC").addEventListener("click", () => clearDOM());
+
 // Adding number to DOM function
 function addNumberToDOM(number) {
   if (!operator) {
@@ -149,8 +151,6 @@ document
       operatorSelectionDOM(operatorElement.textContent)
     )
   );
-
-document.getElementById("AC").addEventListener("click", () => clearDOM());
 
 // Handle equals click
 function handleEquals() {
